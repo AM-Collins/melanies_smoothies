@@ -2,21 +2,18 @@
 snowflake-snowpark-python
 streamlit
 
-definition_version: 2
-entities:
-  streamlit_app:
-    type: streamlit
-    main_file: CustomerOrder.py
-    artifacts:
-      - pyproject.toml
-      - CustomerOrder.py
-      - .streamlit/config.toml
-    identifier:
-      database: SMOOTHIES
-      schema: PUBLIC
-      name: CUSTOM_SMOOTHIE_ORDER_FORM
-    title: Custom Smoothie Order Form
-    query_warehouse: COMPUTE_WH
-    compute_pool: SYSTEM_COMPUTE_POOL_CPU
-    run_mode: SpcsOnly
-    execute_as: OWNER
+[project]
+name = "streamlit-app"
+requires-python = "~=3.11.0"
+version = "0.0.1"
+description = ""
+dependencies = [
+    "streamlit[snowflake]"
+]
+
+[tool.uv]
+constraint-dependencies = ["numba>=0.56.0"]
+exclude-newer = "7 days"
+
+[tool.uv.exclude-newer-package]
+streamlit = false
